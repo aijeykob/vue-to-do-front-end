@@ -1,44 +1,25 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-
-  <HelloWorld msg="Welcome to Your Vue.js App"/>v
-  <div id="two-way-binding">
-    <p>{{ message }}</p>
-    <input v-model="message" />
+  <w-app>
+  <div id="nav">
+    <Navbar/>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
   </div>
-  <ol>
-    <!-- Создание экземпляра компонента todo-item -->
-    <todo-item>kopkp</todo-item>
-  </ol>
-  <div>2222</div>
+  <router-view/>
+  </w-app>
 </template>
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// @ is an alias to /src
+import Navbar from "./components/Navbar";
 
-const TodoItem = {
-  name: 'todo-item',
-  template: `<li>Это одна из задач</li>`
-}
 export default {
-
+  name: 'Home',
   components: {
-    TodoItem,
-    HelloWorld,
-
-  },
-  data() {
-    return {
-      message: 123123123
-    }
-  },
-  mounted() {
-    setInterval(() => {
-      this.counter++
-    }, 1000)
+    Navbar,
   }
 }
 </script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -46,6 +27,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
